@@ -7,9 +7,21 @@ import {
     ADD_POINT_SUCCESS,
     FETCH_POINTS,
     FETCH_POINTS_SERVER_ERROR,
-    FETCH_POINTS_SUCCESS
+    FETCH_POINTS_SUCCESS,
+    NO_SERVER_ERROR
 } from "../action-types";
 import * as Services from "../../services";
+
+/**
+ * Returns Redux Thunk function that dispatches NO_SERVER_ERROR action
+ * @function setNoServerError
+ *
+ * @returns {function} - Redux Thunk function.
+ */
+export const setNoServerError = () => (dispatch: Dispatch) => {
+    dispatch({type: NO_SERVER_ERROR})
+};
+
 
 /**
  * Dispatch axios action to fetch points

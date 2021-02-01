@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect} from "react";
+import "./App.css";
+import Main from "./pages/main";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchPointsDispatch, setNoServerError} from "./redux/actions";
+import {hasServerError} from "./redux/selectors";
+import {ToastMessage} from "./components/common";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+/**
+ * App component - renders app
+ * @function App
+ *
+ * @constructor
+ *
+ * {JSX.Element}
+ */
+export const App = (): JSX.Element => {
+    const dispatch = useDispatch();
+    const serverError: boolean = useSelector(hasServerError);
+
+    useEffect(() => {
+        dispatch(fetchPointsDispatch);
+    }, [dispatch]);
+
+    return (
+        <div data-test="component-app">
+            {serverError ?
+                <ToastMessage data-test="toast-message-element" header="Error!" body="Server error!"
+                              onClose={() => dispatch(setNoServerError())}/>
+                : null}
+            <Main/>
+        </div>
+    );
 }
 
 export default App;
