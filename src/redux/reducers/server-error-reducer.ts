@@ -1,4 +1,4 @@
-import {NO_SERVER_ERROR, SERVER_ERROR} from "../action-types";
+import {ADD_POINT_SERVER_ERROR, FETCH_POINTS_SERVER_ERROR, NO_SERVER_ERROR, SERVER_ERROR} from "../action-types";
 import {ActionTypes} from "../types";
 
 const initialState: boolean = false;
@@ -13,6 +13,8 @@ const initialState: boolean = false;
  */
 const ServerErrorReducer = (state: boolean = initialState, action: ActionTypes): boolean => {
     switch (action.type) {
+        case ADD_POINT_SERVER_ERROR:
+        case FETCH_POINTS_SERVER_ERROR:
         case SERVER_ERROR:
             return true;
         case NO_SERVER_ERROR:

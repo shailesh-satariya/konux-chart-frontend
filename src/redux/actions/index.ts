@@ -1,7 +1,14 @@
 import {AxiosResponse} from "axios";
 import {Dispatch} from "redux";
 import {Point} from "../../types";
-import {ADD_POINT, ADD_POINTS, SERVER_ERROR} from "../action-types";
+import {
+    ADD_POINT,
+    ADD_POINT_SERVER_ERROR,
+    ADD_POINT_SUCCESS,
+    FETCH_POINTS,
+    FETCH_POINTS_SERVER_ERROR,
+    FETCH_POINTS_SUCCESS
+} from "../action-types";
 import * as Services from "../../services";
 
 /**
@@ -13,15 +20,19 @@ import * as Services from "../../services";
 export const fetchPointsDispatch = (dispatch: Dispatch): Promise<any> => {
     const addPointsFn = (points: Point[]): void => {
         dispatch({
-            type: ADD_POINTS,
+            type: FETCH_POINTS_SUCCESS,
             payload: points
         });
     };
 
+    dispatch({
+        type: FETCH_POINTS
+    });
+
     return Services.fetchPoints().then((response: AxiosResponse) => {
         addPointsFn(response.data);
     }).catch(() => {
-        dispatch({type: SERVER_ERROR});
+        dispatch({type: FETCH_POINTS_SERVER_ERROR});
     });
 };
 
@@ -35,15 +46,19 @@ export const fetchPointsDispatch = (dispatch: Dispatch): Promise<any> => {
 export const addPointDispatch = (point: Point) => (dispatch: Dispatch): Promise<any> => {
     const addPointFn = (newPoint: Point): void => {
         dispatch({
-            type: ADD_POINT,
+            type: ADD_POINT_SUCCESS,
             payload: newPoint
         });
     };
 
+    dispatch({
+        type: ADD_POINT,
+    });
+
     return Services.addPoint(point).then(() => {
         addPointFn(point);
     }).catch(() => {
-        dispatch({type: SERVER_ERROR});
+        dispatch({type: ADD_POINT_SERVER_ERROR});
     });
 };
 

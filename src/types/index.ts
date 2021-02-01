@@ -1,3 +1,4 @@
+export * from './app-state';
 export * from './dimension';
 export * from './margins';
 export * from './point';

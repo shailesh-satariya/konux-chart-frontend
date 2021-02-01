@@ -1,4 +1,4 @@
-import {ADD_POINT, ADD_POINTS} from "../../action-types";
+import {ADD_POINT_SUCCESS, FETCH_POINTS_SUCCESS} from "../../action-types";
 import PointsReducer from "../points-reducer";
 import {Point} from "../../../types";
 
@@ -87,7 +87,7 @@ test("returns state of array of points upon receiving an action of type `ADD_POI
         {x: "2020-12-28T07:13:33.743Z", y: 62},
     ];
     const newState = PointsReducer([], {
-        type: ADD_POINTS,
+        type: FETCH_POINTS_SUCCESS,
         payload: [...points],
     });
     expect(newState).toEqual(points);
@@ -96,7 +96,7 @@ test("returns state of array of points upon receiving an action of type `ADD_POI
 test("returns state of array of points upon receiving an action of type `NO_SERVER_ERROR`", () => {
     const point: Point = {x: "2021-01-27T07:13:33.742Z", y: 70};
     const newState = PointsReducer([], {
-        type: ADD_POINT,
+        type: ADD_POINT_SUCCESS,
         payload: {...point},
     });
     expect(newState).toEqual([point]);

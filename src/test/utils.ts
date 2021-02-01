@@ -4,11 +4,13 @@ import {ActionTypes} from "../redux/types";
 
 import rootReducer from "../redux/reducers";
 import {middlewares, RootState} from "../redux/store";
+import {AppState} from "../types";
 
 /**
  * Default root state
  */
 export const DefaultState: RootState = {
+    appState: AppState.NO_STATE,
     points: [],
     serverError: false
 };

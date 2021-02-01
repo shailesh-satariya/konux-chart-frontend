@@ -1,6 +1,6 @@
 import {Point} from "../../types";
 import {ActionTypes} from "../types";
-import {ADD_POINT, ADD_POINTS} from "../action-types";
+import {ADD_POINT_SUCCESS, FETCH_POINTS_SUCCESS} from "../action-types";
 
 const initialState: Point[] = [];
 
@@ -14,9 +14,9 @@ const initialState: Point[] = [];
  */
 const PointsReducer = (state: Point[] = initialState, action: ActionTypes): Point[] => {
     switch (action.type) {
-        case ADD_POINT:
+        case ADD_POINT_SUCCESS:
             return [...state, action.payload]
-        case ADD_POINTS:
+        case FETCH_POINTS_SUCCESS:
             return action.payload;
         default:
             return state

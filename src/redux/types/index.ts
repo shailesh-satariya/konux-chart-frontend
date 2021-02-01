@@ -1,4 +1,13 @@
-import {ADD_POINT, ADD_POINTS, NO_SERVER_ERROR, SERVER_ERROR,} from "../action-types";
+import {
+    ADD_POINT,
+    ADD_POINT_SERVER_ERROR,
+    ADD_POINT_SUCCESS,
+    FETCH_POINTS,
+    FETCH_POINTS_SERVER_ERROR,
+    FETCH_POINTS_SUCCESS,
+    NO_SERVER_ERROR,
+    SERVER_ERROR,
+} from "../action-types";
 import {Point} from "../../types";
 
 interface DefaultAction {
@@ -7,11 +16,27 @@ interface DefaultAction {
 
 interface AddPointAction {
     type: typeof ADD_POINT;
+}
+
+interface AddPointServerErrorAction {
+    type: typeof ADD_POINT_SERVER_ERROR;
+}
+
+interface AddPointSuccessAction {
+    type: typeof ADD_POINT_SUCCESS;
     payload: Point;
 }
 
-interface AddPointsAction {
-    type: typeof ADD_POINTS;
+interface FetchPointsAction {
+    type: typeof FETCH_POINTS;
+}
+
+interface FetchPointsServerErrorAction {
+    type: typeof FETCH_POINTS_SERVER_ERROR;
+}
+
+interface FetchPointsSuccessAction {
+    type: typeof FETCH_POINTS_SUCCESS;
     payload: Point[];
 }
 
@@ -26,6 +51,10 @@ interface NoServerError {
 export type ActionTypes =
     | DefaultAction
     | AddPointAction
-    | AddPointsAction
+    | AddPointServerErrorAction
+    | AddPointSuccessAction
+    | FetchPointsAction
+    | FetchPointsServerErrorAction
+    | FetchPointsSuccessAction
     | ServerError
     | NoServerError;
