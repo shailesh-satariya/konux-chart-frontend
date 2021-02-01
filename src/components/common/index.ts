@@ -1,2 +1,3 @@
 export {default as DateTime} from "./date-time";
 export {default as Input} from "./input";
+export {default as ToastMessage} from "./toast-message";
