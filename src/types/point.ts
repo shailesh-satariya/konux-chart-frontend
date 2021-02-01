@@ -1,4 +1,4 @@
 export interface Point {
-    x: string;
+    x: string | Date | null;
     y: number;
 }
