@@ -7,7 +7,6 @@ import {DefaultState, findByTestAttr, storeFactory} from "../../../test/utils";
 import {ChartInput} from "../index";
 import {RootState} from "../../../redux/store";
 import {ActionTypes} from "../../../redux/types";
-import {ADD_POINT} from "../../../redux/action-types";
 import {AppState} from "../../../types";
 
 const defaultStore: Store<RootState, ActionTypes> = storeFactory();
@@ -84,7 +83,6 @@ describe("`Submit` button enabled disabled state", () => {
         const store: Store<RootState, ActionTypes> = storeFactory({...DefaultState, ...{appState: AppState.ADD_POINT}});
         const wrapper: ReactWrapper = setup(store);
 
-        store.dispatch({type: ADD_POINT});
         const submitButtonElement = findByTestAttr(wrapper, "submit-button-element");
         expect(submitButtonElement.prop("disabled")).toBeTruthy();
     });

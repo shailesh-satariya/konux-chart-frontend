@@ -36,8 +36,11 @@ const Axis = ({orient, scale, tickSize, padding, ticks, format, className, trans
             const axis = (d3[axisType] as Function)()
                 .scale(scale)
                 .tickSize(-tickSize)
-                .tickPadding(padding)
-                .ticks(ticks);
+                .tickPadding(padding);
+
+            if (format) {
+                axis.tickFormat(format);
+            }
 
             d3.select(ref.current)
                 .call(axis)

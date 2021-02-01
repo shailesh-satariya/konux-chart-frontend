@@ -17,7 +17,9 @@ const defaultProps: LineChartProps = {
             y: 97,
         }],
     svgDimension: {width: 1200, height: 600},
-    margins: {left: 10, top: 10, right: 10, bottom: 10}
+    margins: {left: 10, top: 10, right: 10, bottom: 10},
+    yLabel: 'Value',
+    xLabel: 'Time'
 };
 
 /**
@@ -55,8 +57,12 @@ describe("render", () => {
             element: 'overlay-element'
         },
         {
-            name: 'text element',
-            element: 'text-element'
+            name: 'x text element',
+            element: 'x-text-element'
+        },
+        {
+            name: 'y text element',
+            element: 'y-text-element'
         },
     ];
 

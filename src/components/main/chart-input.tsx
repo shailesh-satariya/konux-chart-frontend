@@ -44,15 +44,26 @@ const ChartInput = (): JSX.Element => {
     };
 
     return (
-        <div data-test="component-chart-input">
-            <h2>Chart Input</h2>
-            <DateTime data-test="x-date-time-element" label="X" value={x} onChange={onChangeX}/>
-            <Input data-test="y-input-element" label="Y" value={y} type="number"
-                   onChange={(val: string) => setY(parseInt(val))}/>
-            <button data-test="submit-button-element" onClick={onSubmitClick}
-                    disabled={(appState === AppState.ADD_POINT || appState === AppState.FETCH_POINTS)}>Submit
-            </button>
-        </div>
+        <form data-test="component-chart-input">
+            <div className="p-2 form-container">
+                <div className="form-row">
+                    <div className="col-md-5">
+                        <DateTime data-test="x-date-time-element" label="Time (X)" value={x} onChange={onChangeX}/>
+                    </div>
+                    <div className="col-md-5">
+                        <Input data-test="y-input-element" label="Value (Y)" value={y} type="number"
+                               onChange={(val: string) => setY(parseInt(val))}/>
+                    </div>
+                    <div className="col-md-2">
+                        <label>&nbsp;</label>
+                        <button data-test="submit-button-element" onClick={onSubmitClick}
+                                className="btn btn-primary w-100"
+                                disabled={(appState === AppState.ADD_POINT || appState === AppState.FETCH_POINTS)}>Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
     );
 };
 

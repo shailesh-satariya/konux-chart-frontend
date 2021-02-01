@@ -21,9 +21,10 @@ export interface DateTimeProps {
  */
 const DateTime = ({value, label, onChange}: DateTimeProps): JSX.Element => {
     return (
-        <div data-test="component-date-time" className="form-group">
+        <div data-test="component-date-time" className="form-group mb-0">
             <label data-test="date-time-label">{label}</label>
             <Datetime data-test="date-time-element" value={value}
+                      inputProps={{className: 'form-control'}}
                       onChange={(moment: string | Moment) => onChange(moment)}
                       timeFormat={CONFIG.timeFormat}/>
         </div>

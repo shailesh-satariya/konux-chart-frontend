@@ -27,7 +27,7 @@ const XYAxisLineChart = ({scales, svgDimension, margins}: XYAxisLineChartProps):
         ticks: 10,
         className: 'axisBottom',
         padding: 10,
-        format: d3.timeFormat("%Y-%m-%d %H:%M:%S")
+        format: null
     }
     const yAxisProps: AxisProps = {
         orient: 'Left',
@@ -37,7 +37,7 @@ const XYAxisLineChart = ({scales, svgDimension, margins}: XYAxisLineChartProps):
         ticks: 10,
         className: 'axisLeft',
         padding: 15,
-        format: null
+        format: d3.format("")
     }
 
     return <g data-test="component-xy-axis-line-chart">

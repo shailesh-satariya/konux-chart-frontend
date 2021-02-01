@@ -23,13 +23,18 @@ export const App = (): JSX.Element => {
     }, [dispatch]);
 
     return (
-        <div data-test="component-app">
+        <main data-test="component-app" className="d-flex flex-column vh-100">
+            <nav className="navbar navbar-light bg-light">
+                <a className="navbar-brand" href="#">Konux chart</a>
+            </nav>
             {serverError ?
                 <ToastMessage data-test="toast-message-element" header="Error!" body="Server error!"
                               onClose={() => dispatch(setNoServerError())}/>
                 : null}
-            <Main/>
-        </div>
+            <div className="flex-1">
+                <Main/>
+            </div>
+        </main>
     );
 }
 
