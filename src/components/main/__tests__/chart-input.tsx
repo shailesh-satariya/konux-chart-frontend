@@ -16,6 +16,8 @@ const defaultStore: Store<RootState, ActionTypes> = storeFactory();
  * Factory function to create a ShallowWrapper for the ChartInput component.
  * @function setup
  *
+ * @param store
+ *
  * @return {ReactWrapper}
  */
 const setup = (store: Store<RootState, ActionTypes> = defaultStore): ReactWrapper => {

@@ -24,6 +24,7 @@ const defaultStore: Store<RootState, ActionTypes> = storeFactory({
  * Factory function to create a ShallowWrapper for the Main component.
  * @function setup
  *
+ * @param store
  *
  * @return {ReactWrapper}
  */
